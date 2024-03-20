@@ -6,17 +6,24 @@ use App\Http\Requests\StoreStandRequest;
 use App\Http\Requests\UpdateStandRequest;
 use App\Http\Resources\StandCollection;
 use App\Http\Resources\StandResource;
-use App\Models\Stand;
+use App\Repositories\StandRepository;
 use Illuminate\Http\Request;
 
 class StandController extends Controller
 {
+
+    public function __construct(
+        protected readonly StandRepository $standRepository,
+    )
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $stands = Stand::paginate(10);
+        $stands = $this->standRepository->paginate();
 
         return new StandCollection($stands);
     }
@@ -26,13 +33,11 @@ class StandController extends Controller
      */
     public function store(StoreStandRequest $request)
     {
-        $data = $request->all();
-
-        $stand = Stand::create($data);
+        $stand = $this->standRepository->create($request->all());
 
         return response()->json([
             'status'    => 'success',
-            'message'   => __('messages.POST.success'),
+            'message'   => __('Resource created successfully'),
             'data'      => new StandResource($stand),
         ], 201);
     }
@@ -40,8 +45,10 @@ class StandController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Stand $stand)
+    public function show($standId)
     {
+        $stand = $this->standRepository->findById($standId);
+
         return response()->json([
             'data'  => new StandResource($stand),
         ]);
@@ -50,28 +57,55 @@ class StandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStandRequest $request, Stand $stand)
+    public function update(UpdateStandRequest $request, $standId)
     {
-        $stand->update($request->all());
+        $stand = $this->standRepository->update($standId, $request->all());
 
         return response()->json([
             'status'    => 'success',
-            'message'   => __('messages.PUT.success'),
+            'message'   => __('Resource updated successfully'),
             'data'      => new StandResource($stand)
-        ], 200);
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stand $stand)
+    public function destroy(Request $request, $standId)
     {
-        $stand->delete();
+        $this->standRepository->delete($standId);
 
         return response()->json([
             'status'    => 'success',
-            'message'   => __('messages.DELETE.success'),
-            'id'        => $stand->id,
-        ], 200);
+            'message'   => __('Resource successfully removed')
+        ]);
+    }
+
+    public function trash()
+    {
+        $stands = $this->standRepository->findAllDeleted();
+
+        return new StandCollection($stands);
+    }
+
+    public function restore(Request $request, $standId)
+    {
+        $stand = $this->standRepository->restore($standId);
+
+        return response()->json([
+            'status'    => 'success',
+            'message'   => __('Resource restored successfully'),
+            'data'      => new StandResource($stand)
+        ]);
+    }
+
+    public function forceDelete(Request $request, $standId)
+    {
+        $this->standRepository->forceDelete($standId);
+
+        return response()->json([
+            'status'    => 'success',
+            'message'   => __('Permanent resource deletion successful')
+        ]);
     }
 }

@@ -34,8 +34,6 @@ class StoreStandRequest extends FormRequest
      */
     public function attributes()
     {
-        return [
-            'name' => 'nome',
-        ];
+        return [];
     }
 }

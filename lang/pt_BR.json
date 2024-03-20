@@ -130,5 +130,11 @@
   "click here to request another": "clique aqui para solicitar outro",
   "of": "de",
   "results": "resultados",
-  "to": "até"
+  "to": "até",
+
+  "Resource created successfully": "Recurso criado com sucesso",
+  "Resource updated successfully": "Recurso atualizado com sucesso",
+  "Resource successfully removed": "Recurso removido com sucesso",
+  "Resource restored successfully": "Recurso restaurado com sucesso",
+  "Permanent resource deletion successful": "Exclusão permanente de recurso bem-sucedida"
 }

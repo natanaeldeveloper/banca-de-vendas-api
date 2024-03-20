@@ -12,16 +12,46 @@ class StandHateoas
 
     public function self(Stand $stand): ?Link
     {
-        return $this->link('stands.show', ['stand' => $stand]);
+        if($stand->deleted_at) {
+            return null;
+        }
+
+        return $this->link('stand.show', ['stand' => $stand]);
     }
 
     public function update(Stand $stand): ?Link
     {
-        return $this->link('stands.update', ['stand' => $stand]);
+        if($stand->deleted_at) {
+            return null;
+        }
+
+        return $this->link('stand.update', ['stand' => $stand]);
     }
 
     public function delete(Stand $stand): ?Link
     {
-        return $this->link('stands.destroy', ['stand' => $stand]);
+        if($stand->deleted_at) {
+            return null;
+        }
+
+        return $this->link('stand.destroy', ['stand' => $stand]);
+    }
+
+    public function restore(Stand $stand): ?Link
+    {
+        if(empty($stand->deleted_at)) {
+            return null;
+        }
+
+        return $this->link('stand.restore', ['stand' => $stand]);
+    }
+
+    public function forceDelete(Stand $stand): ?Link
+    {
+        if(empty($stand->deleted_at)) {
+            return null;
+        }
+
+        return $this->link('stand.forceDelete', ['stand' => $stand]);
     }
 }
