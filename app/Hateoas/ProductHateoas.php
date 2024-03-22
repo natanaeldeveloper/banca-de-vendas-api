@@ -12,16 +12,16 @@ class ProductHateoas
 
     public function self(Product $product): ?Link
     {
-        return $this->link('products.show', ['stand' => $product->sales_stand_id, 'product' => $product]);
+        return $this->link('product.show', ['stand' => $product->stand_id, 'product' => $product->id]);
     }
 
     public function update(Product $product): ?Link
     {
-        return $this->link('products.update', ['stand' => $product->sales_stand_id, 'product' => $product]);
+        return $this->link('product.update', ['stand' => $product->stand_id, 'product' => $product]);
     }
 
     public function delete(Product $product): ?Link
     {
-        return $this->link('products.destroy', ['stand' => $product->sales_stand_id, 'product' => $product]);
+        return $this->link('product.destroy', ['stand' => $product->stand_id, 'product' => $product]);
     }
 }

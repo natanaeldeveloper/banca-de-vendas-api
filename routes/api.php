@@ -24,5 +24,5 @@ Route::post('stands/{stand}/restore', [\App\Http\Controllers\StandController::cl
 Route::apiResource('stands', \App\Http\Controllers\StandController::class)->names('stand');
 
 
-// Route::apiResource('stands/{stand}/products', \App\Http\Controllers\ProductController::class)->names('products');
+Route::apiResource('stands/{stand}/products', \App\Http\Controllers\ProductController::class)->names('product')->middleware('product.check');
 // Route::apiResource('stands/{stand}/products/{product}/prices', \App\Http\Controllers\ProductPriceController::class)->names('product.price');

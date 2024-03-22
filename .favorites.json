@@ -1,0 +1,91 @@
+[
+    {
+        "type": "Group",
+        "name": "Banca de Vendas",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "9WiCV8qeEHcjUFo0"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Controllers",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Controllers",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "HiwK1BX3n24LfJze"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Models",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Models",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "kVlxhOz3Iun1epjU"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Hateoas",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Hateoas",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "qh2isAQVjY9k5myL"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\database",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\database",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "CETpsDrXo1P4Vyk6"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Requests",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Requests",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "12Xvre03mqdiRZjp"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Resources",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Resources",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "xJyE46TYr3XcbHlU"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Repositories",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Repositories",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "RmG15T0AkEw3gOdp"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\routes",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\routes",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "PUSTQ9cyjkJdvugZ"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Middleware",
+        "parent_id": "9WiCV8qeEHcjUFo0",
+        "fsPath": "c:\\laragon\\www\\banca-de-vendas-api\\app\\Http\\Middleware",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "oM5t3xpyfAwBGWKl"
+    }
+]

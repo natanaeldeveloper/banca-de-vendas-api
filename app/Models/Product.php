@@ -10,17 +10,17 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'sales_stand_id',
+        'stand_id',
         'name',
     ];
 
     public function stand()
     {
-        return $this->belongsTo(Stand::class, 'sales_stand_id', 'id');
+        return $this->belongsTo(Stand::class, 'stand_id', 'id');
     }
 
     public function prices()
     {
-        return $this->hasMany(ProductPrice::class, 'product_id', 'id');
+        return $this->hasMany(ProductPrice::class, 'stand_id', 'id');
     }
 }

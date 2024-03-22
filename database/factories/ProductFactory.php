@@ -21,7 +21,7 @@ class ProductFactory extends Factory
         $standsId = Stand::all()->pluck('id');
 
         return [
-            'sales_stand_id' => fake()->randomElement($standsId),
+            'stand_id' => fake()->randomElement($standsId),
             'name' => fake()->word,
         ];
     }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sales_stand_id');
+            $table->foreignId('stand_id');
             $table->string('name');
             $table->timestamps();
 
-            $table->foreign('sales_stand_id')
+            $table->foreign('stand_id')
                 ->references('id')
                 ->on('stands');
         });

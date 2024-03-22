@@ -6,19 +6,26 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
-use App\Models\Product;
-use App\Models\Stand;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductController extends Controller
 {
+
+    public function __construct(
+        protected readonly ProductRepository $productRepository
+    )
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, Stand $stand)
+    public function index(Request $request, $standId)
     {
-        $products = Product::where('sales_stand_id', $stand->id)->paginate(10);
+        $products = $this->productRepository->whereByStandIdPaginate($standId);
 
         return new ProductCollection($products);
     }
@@ -26,15 +33,15 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request, Stand $stand)
+    public function store(StoreProductRequest $request, $standId)
     {
-        $data = array_merge($request->all(), ['sales_stand_id' => $stand->id]);
+        $data = array_merge($request->all(), ['stand_id' => $standId]);
 
-        $product = Product::create($data);
+        $product = $this->productRepository->create($data);
 
         return response()->json([
             'status'    => 'success',
-            'message'   => __('messages.POST.success'),
+            'message'   => __('Resource created successfully'),
             'data'      => new ProductResource($product),
         ], 201);
     }
@@ -42,11 +49,9 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Stand $stand, Product $product)
+    public function show($standId, $productId)
     {
-        if($product->sales_stand_id !== $stand->id) {
-            throw new NotFoundHttpException('Não foi encontrado nenhum produto condizente neste stand de vendas');
-        }
+        $product = $this->productRepository->findById($productId);
 
         return response()->json([
             'data' => new ProductResource($product),
@@ -56,36 +61,27 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Stand $stand, Product $product)
+    public function update(UpdateProductRequest $request, $standId, $productId)
     {
-        if($product->sales_stand_id !== $stand->id) {
-            throw new NotFoundHttpException('Não foi encontrado nenhum produto condizente neste stand de vendas');
-        }
-
-        $product->update($request->all());
+        $product = $this->productRepository->update($productId, $request->all());
 
         return response()->json([
             'status'    => 'success',
-            'message'   => __('messages.PUT.success'),
+            'message'   => __('Resource updated successfully'),
             'data'      => new ProductResource($product)
-        ], 200);
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Stand $stand, Product $product)
+    public function destroy($standId, $productId)
     {
-        if($product->sales_stand_id !== $stand->id) {
-            throw new NotFoundHttpException('Não foi encontrado nenhum produto condizente neste stand de vendas');
-        }
-
-        $product->delete();
+       $this->productRepository->delete($productId);
 
         return response()->json([
             'status'    => 'success',
-            'message'   => __('messages.DELETE.success'),
-            'id'        => $product->id,
-        ], 200);
+            'message'   => __('Resource successfully removed'),
+        ]);
     }
 }

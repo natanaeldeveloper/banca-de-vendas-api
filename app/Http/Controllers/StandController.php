@@ -71,7 +71,7 @@ class StandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $standId)
+    public function destroy($standId)
     {
         $this->standRepository->delete($standId);
 
@@ -88,7 +88,7 @@ class StandController extends Controller
         return new StandCollection($stands);
     }
 
-    public function restore(Request $request, $standId)
+    public function restore($standId)
     {
         $stand = $this->standRepository->restore($standId);
 
