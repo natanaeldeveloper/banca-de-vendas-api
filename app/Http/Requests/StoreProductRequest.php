@@ -26,16 +26,4 @@ class StoreProductRequest extends FormRequest
             'name' => ['required', 'max:255'],
         ];
     }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name' => 'nome'
-        ];
-    }
 }

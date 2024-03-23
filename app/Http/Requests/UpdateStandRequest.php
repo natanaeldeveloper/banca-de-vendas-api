@@ -22,23 +22,12 @@ class UpdateStandRequest extends FormRequest
      */
     public function rules(): array
     {
-
-        $currentStandId = $this->route('stand');
-
         return [
-            'name' => ['required', 'max:255', Rule::unique('stands', 'name')->ignore($currentStandId)],
-        ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name' => 'nome',
+            'name' => ['required', 'max:255'],
+            'allow_future_payment' => [Rule::in(0,1)],
+            'pix_key' => ['max:255'],
+            'pix_key_owner' => ['max:255'],
+            'color' => ['max:10']
         ];
     }
 }

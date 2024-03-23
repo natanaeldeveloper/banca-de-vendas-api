@@ -15,8 +15,4 @@ interface RepositoryInterface {
     public function update(int $id, array $data);
 
     public function delete(int $id);
-
-    public function forceDelete(int $id);
-
-    public function findAllDeleted();
 }

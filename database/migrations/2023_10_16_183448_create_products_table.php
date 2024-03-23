@@ -15,11 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('stand_id');
             $table->string('name');
+            $table->string('code');
             $table->timestamps();
 
             $table->foreign('stand_id')
                 ->references('id')
                 ->on('stands');
+
+            $table->unique(['code', 'stand_id'], 'unique_column_code');
         });
     }
 

@@ -22,7 +22,8 @@ class ProductFactory extends Factory
 
         return [
             'stand_id' => fake()->randomElement($standsId),
-            'name' => fake()->word,
+            'name' => $this->faker->word(),
+            'code' => $this->faker->numberBetween(11111111, 99999999),
         ];
     }
 }

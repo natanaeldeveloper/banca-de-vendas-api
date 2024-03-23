@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('stands', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('pix_key')->nullable();
+            $table->string('pix_key_owner')->nullable();
+            $table->string('color')->nullable();
+            $table->boolean('allow_future_payment')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

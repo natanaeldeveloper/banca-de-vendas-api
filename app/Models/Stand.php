@@ -12,7 +12,11 @@ class Stand extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name'
+        'name',
+        'pix_key',
+        'pix_key_owner',
+        'color',
+        'allow_future_payment'
     ];
 
     public function products()

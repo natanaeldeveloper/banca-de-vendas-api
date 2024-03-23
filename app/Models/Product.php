@@ -12,15 +12,11 @@ class Product extends Model
     protected $fillable = [
         'stand_id',
         'name',
+        'code',
     ];
 
     public function stand()
     {
         return $this->belongsTo(Stand::class, 'stand_id', 'id');
-    }
-
-    public function prices()
-    {
-        return $this->hasMany(ProductPrice::class, 'stand_id', 'id');
     }
 }

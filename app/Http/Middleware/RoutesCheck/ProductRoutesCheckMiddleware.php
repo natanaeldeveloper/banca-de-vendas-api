@@ -28,6 +28,7 @@ class ProductRoutesCheckMiddleware
         $standId = $request->route('stand');
         $productId = $request->route('product');
 
+
         if($standId && $productId && !$this->productRepository->checkBelongsTo($standId, $productId)) {
             throw new NotFoundHttpException;
         }

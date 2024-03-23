@@ -17,7 +17,11 @@ class StandFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->randomElement($this->fakeNames()),
+            'name' => $this->faker->unique()->randomElement($this->fakeNames()),
+            'allow_future_payment' => $this->faker->boolean(),
+            'pix_key' => $this->faker->phoneNumber(),
+            'pix_key_owner' => $this->faker->name(),
+            'color' => $this->faker->hexColor(),
         ];
     }
 

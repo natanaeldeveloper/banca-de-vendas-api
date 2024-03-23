@@ -42,20 +42,4 @@ abstract class BaseRepository implements RepositoryInterface {
     {
         return $this->model->findOrFail($id)->delete();
     }
-
-    public function findAllDeleted()
-    {
-        return $this->model->onlyTrashed()->get();
-    }
-
-    public function restore(int $id)
-    {
-        $this->model->onlyTrashed()->findOrFail($id)->restore();
-        return $this->model->findOrFail($id);
-    }
-
-    public function forceDelete(int $id)
-    {
-        return $this->model->onlyTrashed()->findOrFail($id)->forceDelete();
-    }
 }

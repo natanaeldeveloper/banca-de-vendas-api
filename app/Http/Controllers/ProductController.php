@@ -8,7 +8,6 @@ use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductController extends Controller
 {
@@ -35,7 +34,8 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request, $standId)
     {
-        $data = array_merge($request->all(), ['stand_id' => $standId]);
+        $code = rand(11111111,99999999);
+        $data = array_merge($request->all(), ['stand_id' => $standId, 'code' => $code]);
 
         $product = $this->productRepository->create($data);
 
