@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'product.check' => \App\Http\Middleware\RoutesCheck\ProductRoutesCheckMiddleware::class,
+        'notebook.check' => \App\Http\Middleware\RoutesCheck\NotebookRoutesCheckMiddleware::class,
     ];
 }

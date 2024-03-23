@@ -25,3 +25,4 @@ Route::apiResource('stands', \App\Http\Controllers\StandController::class)->name
 
 
 Route::apiResource('stands/{stand}/products', \App\Http\Controllers\ProductController::class)->names('product')->middleware('product.check');
+Route::apiResource('stands/{stand}/notebooks', \App\Http\Controllers\NotebookController::class)->names('notebook')->middleware('notebook.check');

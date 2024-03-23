@@ -12,7 +12,7 @@ class ProductHateoas
 
     public function self(Product $product): ?Link
     {
-        return $this->link('product.show', ['stand' => $product->stand_id, 'product' => $product->id]);
+        return $this->link('product.show', ['stand' => $product->stand_id, 'product' => $product]);
     }
 
     public function update(Product $product): ?Link
