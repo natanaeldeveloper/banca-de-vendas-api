@@ -14,8 +14,7 @@ class StandController extends Controller
 
     public function __construct(
         protected readonly StandRepository $standRepository,
-    )
-    {
+    ) {
     }
 
     /**
@@ -83,7 +82,7 @@ class StandController extends Controller
 
     public function trash()
     {
-        $stands = $this->standRepository->findAllDeleted();
+        $stands = $this->standRepository->getAllDeleted();
 
         return new StandCollection($stands);
     }
