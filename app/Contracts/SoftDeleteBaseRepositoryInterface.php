@@ -6,7 +6,7 @@ interface SoftDeleteBaseRepositoryInterface {
 
     public function delete(int $id);
 
-    public function findAllDeleted();
+    public function getAllDeleted();
 
     public function restore(int $id);
 

@@ -21,6 +21,6 @@ class Stand extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class, 'product_id', 'id');
+        return $this->hasMany(Product::class);
     }
 }

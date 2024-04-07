@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Notebook;
 
-class NotebookRepository extends BaseRepository {
+class NotebookRepository extends BaseRepository
+{
 
     public function __construct(Notebook $notebook)
     {
@@ -16,11 +17,16 @@ class NotebookRepository extends BaseRepository {
         return $this->model
             ->where('stand_id', $standId)
             ->where('id', $notebookId)
-            ->count() > 0;
+            ->exists();
     }
 
-    public function whereByStandIdPaginate(int $standId, int $perPage = 10)
+    public function getWhereByStandIdPaginate(int $standId, int $perPage = 10)
     {
         return $this->model->where('stand_id', $standId)->paginate($perPage);
+    }
+
+    public function getWhereByStandId(int $standId)
+    {
+        return $this->model->where('stand_id', $standId)->get();
     }
 }

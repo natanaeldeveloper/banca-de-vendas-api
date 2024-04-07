@@ -17,6 +17,11 @@ class Notebook extends Model
 
     public function stand()
     {
-        return $this->belongsTo(Stand::class, 'stand_id', 'id');
+        return $this->belongsTo(Stand::class);
+    }
+
+    public function productsOffered()
+    {
+        return $this->hasMany(ProductOffered::class);
     }
 }

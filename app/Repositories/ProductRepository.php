@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Product;
 
-class ProductRepository extends BaseRepository {
+class ProductRepository extends BaseRepository
+{
 
     public function __construct(Product $product)
     {
@@ -16,11 +17,16 @@ class ProductRepository extends BaseRepository {
         return $this->model
             ->where('stand_id', $standId)
             ->where('id', $productId)
-            ->count() > 0;
+            ->exists();
     }
 
-    public function whereByStandIdPaginate(int $standId, int $perPage = 10)
+    public function getWhereByStandIdPaginate(int $standId, int $perPage = 10)
     {
         return $this->model->where('stand_id', $standId)->paginate($perPage);
+    }
+
+    public function getWhereByStandId(int $standId)
+    {
+        return $this->model->where('stand_id', $standId)->get();
     }
 }

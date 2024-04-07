@@ -5,13 +5,14 @@ namespace App\Repositories;
 use App\Contracts\RepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
-abstract class BaseRepository implements RepositoryInterface {
+abstract class BaseRepository implements RepositoryInterface
+{
 
     public function __construct(protected Model $model)
     {
     }
 
-    public function findAll()
+    public function getAll()
     {
         return $this->model->all();
     }

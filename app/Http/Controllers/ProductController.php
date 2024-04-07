@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function index(Request $request, $standId)
     {
-        $products = $this->productRepository->whereByStandIdPaginate($standId);
+        $products = $this->productRepository->getWhereByStandIdPaginate($standId);
 
         return new ProductCollection($products);
     }

@@ -24,7 +24,7 @@ class NotebookController extends Controller
      */
     public function index($standId)
     {
-        $notebooks = $this->notebookRepository->whereByStandIdPaginate($standId);
+        $notebooks = $this->notebookRepository->getWhereByStandIdPaginate($standId);
 
         return new NotebookCollection($notebooks);
     }

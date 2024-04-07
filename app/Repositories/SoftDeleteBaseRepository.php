@@ -11,7 +11,7 @@ abstract class SoftDeleteBaseRepository extends BaseRepository implements SoftDe
     {
     }
 
-    public function findAllDeleted()
+    public function getAllDeleted()
     {
         return $this->model->onlyTrashed()->get();
     }

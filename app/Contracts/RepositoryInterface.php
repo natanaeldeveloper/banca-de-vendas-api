@@ -4,7 +4,7 @@ namespace App\Contracts;
 
 interface RepositoryInterface {
 
-    public function findAll();
+    public function getAll();
 
     public function paginate(int $perPage);
 

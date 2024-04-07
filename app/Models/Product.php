@@ -17,6 +17,6 @@ class Product extends Model
 
     public function stand()
     {
-        return $this->belongsTo(Stand::class, 'stand_id', 'id');
+        return $this->belongsTo(Stand::class);
     }
 }
